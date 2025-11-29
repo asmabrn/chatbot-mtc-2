@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maghreb Truck Company SPA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            background: #000;
+        }
+
+        /* Background avec l'image du camion */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./Capture.PNG');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            filter: blur(3px);
+            transform: scale(1.1);
+        }
+
+        /* Overlay pour assombrir légèrement l'arrière-plan */
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        /* Header */
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 900;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+            letter-spacing: 2px;
+        }
+
+        /* Container principal */
+        .main-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 50px 50px;
+            z-index: 5;
+        }
+
+        /* Section Avatar 3D - AGRANDI */
+        .avatar-container {
+            width: 60%;
+            height: 85vh;
+            position: relative;
+            z-index: 6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 2%;
+        }
+
+        #canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+        }
+
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 25px 50px;
+            border-radius: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            animation: spin 1s linear infinite;
+            margin: 15px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Bulle de chat - RÉDUITE */
+        .chat-bubble {
+            width: 35%;
+            min-height: 550px;
+            max-height: 70vh;
+            background: rgba(59, 130, 246, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            position: relative;
+            z-index: 7;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            display: flex;
+            flex-direction: column;
+            margin-right: 2%;
+        }
+
+        /* Flèche de la bulle pointant vers l'avatar */
+        .chat-bubble::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 25px solid transparent;
+            border-bottom: 25px solid transparent;
+            border-right: 25px solid rgba(59, 130, 246, 0.9);
+            filter: drop-shadow(-2px 0 5px rgba(0, 0, 0, 0.2));
+        }
+
+        .chat-bubble h2 {
+            color: white;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 400;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Boutons d'action */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .action-btn {
+            padding: 15px 25px;
+            background: rgba(30, 64, 175, 0.9);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .action-btn:hover {
+            background: rgba(30, 64, 175, 1);
+            transform: translateX(5px);
+            box-shadow: 0 6px 25px rgba(30, 64, 175, 0.5);
+        }
+
+        /* Zone de messages */
+        .messages-container {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 18px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-height: 350px;
+        }
+
+        .messages-container.active {
+            display: block;
+        }
+
+        .messages-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .messages-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .message {
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            animation: slideIn 0.4s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            word-wrap: break-word;
+            font-size: 0.95rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            background: rgba(30, 64, 175, 0.95);
+            color: white;
+            margin-left: 15%;
+            backdrop-filter: blur(10px);
+        }
+
+        .message.assistant {
+            background: rgba(255, 255, 255, 0.98);
+            color: #1e293b;
+            margin-right: 15%;
+            backdrop-filter: blur(10px);
+        }
+
+        .message.typing {
+            background: rgba(255, 255, 255, 0.8);
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* Input de chat */
+        .chat-input-container {
+            display: flex;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 8px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        #userInput {
+            flex: 1;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            outline: none;
+            color: #1e293b;
+            background: transparent;
+        }
+
+        #userInput::placeholder {
+            color: #94a3b8;
+        }
+
+        #sendBtn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
+        }
+
+        #sendBtn:hover {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.6);
+        }
+
+        #sendBtn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .chat-bubble {
+                padding: 25px;
+            }
+
+            .avatar-container {
+                width: 55%;
+            }
+
+            .chat-bubble {
+                width: 40%;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .main-container {
+                padding: 100px 30px 30px;
+            }
+
+            .avatar-container {
+                width: 50%;
+            }
+
+            .chat-bubble {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 30px;
+                padding-top: 120px;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .avatar-container {
+                width: 80%;
+                height: 450px;
+                margin-bottom: 20px;
+                margin-left: 0;
+            }
+
+            .chat-bubble {
+                width: 85%;
+                min-height: 500px;
+                margin-bottom: 30px;
+                margin-right: 0;
+                max-height: 60vh;
+            }
+
+            .chat-bubble::before {
+                display: none;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 100px 20px 20px;
+            }
+
+            .chat-bubble {
+                width: 95%;
+                padding: 20px;
+                min-height: 450px;
+            }
+
+            .avatar-container {
+                width: 95%;
+                height: 350px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .chat-bubble h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background avec image du camion -->
+    <div class="background"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>MAGHREB TRUCK COMPANY SPA</h1>
+    </div>
+
+    <!-- Container principal -->
+    <div class="main-container">
+        <!-- Avatar 3D - AGRANDI -->
+        <div class="avatar-container">
+            <div id="loading">
+                <div class="spinner"></div>
+                Chargement de l'avatar...
+            </div>
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <!-- Bulle de chat - RÉDUITE -->
+        <div class="chat-bubble" id="chatBubble">
+            <h2>Hello Azul! I'm Aylan, MTC Assistant. I'm available 24/7 to answer your questions about our company. .</h2>
+
+            <div class="messages-container" id="messagesContainer"></div>
+
+            <div class="action-buttons" id="actionButtons">
+                <button class="action-btn" onclick="quickQuestion('Present MTC SPA to me! ')">
+                    Present MTC SPA to me!
+                </button>
+
+                <button class="action-btn" onclick="quickQuestion('Contacts ! ')">
+                    Contacts !
+                </button>
+            </div>
+
+            <div class="chat-input-container">
+                <input type="text" id="userInput" placeholder="Posez votre question ici..."
+                    onkeypress="handleKeyPress(event)">
+                <button id="sendBtn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script>
+        let model = null;
+        let isTyping = false;
+        let baseYPosition = 0;
+
+
+        // Base de connaissances MTC SPA - Version améliorée
+        const mtcKnowledgeBase = {
+            "presentation": {
+                question: "MTC Presentation",
+                réponse: `<p><strong>MTC (Maghreb Truck Company)</strong> is the exclusive dealer of MAN Truck & Bus in Algeria.</p>
+        <p>With <strong>over 15 years of experience</strong>, MTC offers complete solutions for goods and passenger transport with an extensive range of MAN industrial vehicles.</p>`
+            },
+
+            "mission": {
+                question: "MTC Mission",
+                réponse: `<p><strong>Our mission</strong> is to support Algerian transport professionals by offering them:</p>
+        <ul>
+            <li> Quality MAN vehicles</li>
+            <li> High-performance after-sales services</li>
+            <li> Spare parts sales</li>
+        </ul>`
+            },
+
+            "vision": {
+                question: "MTC Vision",
+                réponse: `<p><strong>Our vision</strong>: Bringing MAN closer to the Algerian market since 2003.</p>
+        <p><strong>Our mission</strong>: Adapt MAN solutions to the specificities of the Algerian territory (2.4M km², climate diversity).</p>
+        <p><strong>Our expertise</strong>: SKD assembly, national technical support, relationship based on trust and dedication.</p>
+        <p><strong>Our commitment</strong>: Strengthen the ties between MAN and Algeria on a long-term basis.</p>`
+            },
+
+            "trucks": {
+                question: "MAN Truck Range",
+                réponse: `<p><strong>MTC offers the complete range of MAN trucks:</strong></p>
+        
+        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> MAN TGS - For construction and worksites</h4>
+            <ul>
+                <li> 6x4, 8x4, 8x8 versions</li>
+                <li> GVW from 18 to 41 tons</li>
+                <li> Engines from 320 to 480 hp</li>
+            </ul>
+        </div>
+
+        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> MAN TGX - For long-distance transport</h4>
+            <ul>
+                <li> Optimal comfort for long journeys</li>
+                <li> Efficient engines to reduce consumption</li>
+                <li> Advanced safety technologies</li>
+            </ul>
+        </div>
+
+        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> MAN TGM - For urban distribution</h4>
+            <ul>
+                <li> Excellent maneuverability in cities</li>
+                <li> 4x2 and 6x2 versions</li>
+                <li> Ideal for urban delivery</li>
+            </ul>
+        </div>`,
+                fichiers: [
+                    {
+                        type: "link",
+                        titre: "📋 Download complete MAN catalog",
+                        url: "https://mtc-man.com/web/camions/",
+                        description: "PDF - 15MB"
+                    },
+                    {
+                        type: "link",
+                        titre: "🎬 Watch presentation video",
+                        url: "https://mtc-man.com/web/videos/camions/",
+                        description: "Video - 3min"
+                    }
+                ]
+            },
+
+            "buses": {
+                question: "MAN Bus Range",
+                réponse: `<p><strong>MTC also markets MAN buses and coaches:</strong></p>
+        
+        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> Urban buses - For public transport</h4>
+            <ul>
+                <li> Lions City for urban lines</li>
+                <li> Ecological solutions (CNG, electric)</li>
+                <li> PMR accessibility</li>
+            </ul>
+        </div>
+
+        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> Intercity coaches - For travel</h4>
+            <ul>
+                <li> Lions Coach for passenger comfort</li>
+                <li> Premium solutions for tourism</li>
+                <li> Long-distance comfort</li>
+            </ul>
+        </div>`,
+                fichiers: [
+                    {
+                        type: "link",
+                        titre: "📋 MAN Bus Catalog 2024",
+                        url: "https://mtc-man.com/web/bus/",
+                        description: "PDF - 12MB"
+                    }
+                ]
+            },
+
+            "aftersales": {
+                question: "MAN After-Sales Service",
+                réponse: `<p><strong>Our certified MAN after-sales network offers:</strong></p>
+        
+        <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+            <h4 style="margin: 0 0 8px 0; color: #ff9900;"> Scheduled maintenance</h4>
+            <ul>
+                <li> Preventive maintenance according to manufacturer schedule</li>
+                <li> Regular technical inspections</li>
+                <li> Use of genuine MAN parts</li>
+            </ul>
+        </div>
+
+        <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+            <h4 style="margin: 0 0 8px 0; color: #ff9900;"> 24/7 Breakdown service</h4>
+            <ul>
+                <li> Roadside assistance nationwide</li>
+                <li> Equipped breakdown vehicles</li>
+                <li> MAN-trained technicians</li>
+            </ul>
+        </div>
+
+        <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+            <h4 style="margin: 0 0 8px 0; color: #ff9900;"> Repairs</h4>
+            <ul>
+                <li> Workshops equipped with latest diagnostic tools</li>
+                <li> Mechanical, bodywork, electrical repairs</li>
+                <li> Compliance with MAN quality standards</li>
+            </ul>
+        </div>
+
+        <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+            <h4 style="margin: 0 0 8px 0; color: #ff9900;"> Maintenance contracts</h4>
+            <ul>
+                <li> Tailored solutions according to your usage</li>
+                <li> All-inclusive packages</li>
+                <li> Operating cost reduction</li>
+            </ul>
+        </div>`,
+                fichiers: [
+                    {
+                        type: "link",
+                        titre: "📄 MAN Maintenance Guide",
+                        url: "https://mtc-man.com/web/service-apres-vente/",
+                        description: "PDF - 8MB"
+                    },
+                    {
+                        type: "link",
+                        titre: "📋 After-Sales Brochure",
+                        url: "https://mtc-man.com/web/documents/sav-brochure.pdf",
+                        description: "PDF - 5MB"
+                    }
+                ]
+            },
+
+            "spareparts": {
+                question: "MAN Spare Parts",
+                réponse: `<p><strong>Parts Distribution Center (PDC)</strong></p>
+        
+        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> Our parts services:</h4>
+            <ul>
+                <li> Large stock of genuine MAN parts</li>
+                <li> Fast delivery throughout MTC network</li>
+                <li> Manufacturer warranty on all parts</li>
+                <li> Parts for all ranges (trucks, buses)</li>
+                <li> 24/7 emergency service for critical parts</li>
+            </ul>
+        </div>`,
+
+                fichiers: [
+                    {
+                        type: "link",
+                        titre: "📋 MAN Parts Catalog",
+                        url: "https://mtc-man.com/web/pièces-de-rechange/",
+                        description: "PDF - 20MB"
+                    },
+                    {
+                        type: "link",
+                        titre: "📞 Urgent parts contact",
+                        url: "tel:05512345680",
+                        description: "Direct call"
+                    }
+                ]
+            },
+
+            "training": {
+                question: "MTC Training Center",
+                réponse: `<p><strong>MTC Training Center - MAN certified training center</strong></p>
+        
+        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> Technical training</h4>
+            <ul>
+                <li> Diesel mechanics and electrical systems</li>
+                <li> Electronic diagnostics</li>
+                <li> Maintenance of new technologies</li>
+                <li> Specific training by vehicle range</li>
+            </ul>
+        </div>
+
+        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <h4 style="margin: 0 0 10px 0; color: #ff9900;">👨‍💼 Driver training</h4>
+            <ul>
+                <li> Eco-driving to reduce consumption</li>
+                <li> Road safety</li>
+                <li> Good loading practices</li>
+                <li> Route optimization</li>
+            </ul>
+        </div>`,
+
+                fichiers: [
+                    {
+                        type: "link",
+                        titre: "📋 Training Catalog 2024",
+                        url: "https://mtc-man.com/web/formation/",
+                        description: "PDF - 10MB"
+                    },
+                    {
+                        type: "link",
+                        titre: "📝 Online registration",
+                        url: "https://mtc-man.com/web/formation/inscription/",
+                        description: "Form"
+                    }
+                ]
+            },
+
+            "network": {
+                question: "MTC Network in Algeria",
+                réponse: `<p><strong>Our national presence:</strong></p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0;">
+            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <strong>🏢 MTC Algiers</strong><br>Route de BLIDA-Oued El Kerma, 16005, BIRKHADEM 
+            </div>
+            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-ra
+            dius: 8px;">
+                <strong>🏢 MTC Oran</strong><br>4 Zone des Showrooms, Hai ANADJMA 
+            </div>
+            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <strong>🏢 MTC Sétif</strong><br>Extension Zone Industrielle Lot n°161
+            </div>
+            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <strong>🏢 MTC Laghouat</strong><br>Relai routier SONE, Route de Ghardaia, RN1
+            </div>
+            
+            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <strong>🏢 BLIDA Factory</strong><br>Relai routier SONE, Route de Ghardaïa, RN1 Laghouat
+            </div>
+        </div>
+
+        <p><strong>All our showrooms feature:</strong></p>
+        <ul>
+            <li> Equipped after-sales </li>
+            <li> Spare parts stock</li>
+        </ul>`,
+                fichiers: [
+                    {
+                        type: "link",
+                        titre: "🗺️ Location map",
+                        url: "https://mtc-man.com/web/nos-implantations/",
+                        description: "PDF - 3MB"
+                    }
+                ]
+            },
+
+            "contact": {
+                question: "Contact MTC",
+                réponse: `<p><strong>📞 MTC Algiers Contacts:</strong></p>
+    
+            <div style="margin: 8px 0;">
+                   <strong> Commercial Service</strong><br>
+                   <a href="tel:023-450290 / 023-450965 / 023-450966" style="color: #1e40af;">023-450290 / 023-450965 / 023-450966</a><br>
+                   <a href="mailto:service.commercial@mtc-man.com" style="color: #1e40af;">service.commercial@mtc-man.com</a>
+            </div>
+
+    <div style="margin: 8px 0;">
+        <strong> After-Sales Service</strong><br>
+        <a href="tel: 023-450970" style="color: #1e40af;">023-450970</a><br>
+        <a href="mailto:sav@mtc-man.com" style="color: #1e40af;">sav@mtc-man.com</a>
+    </div>
+
+    <div style="margin: 8px 0;">
+        <strong> Spare Parts</strong><br>
+        <a href="tel:023-450957 / 023-450968 / 023-450982" style="color: #1e40af;">023-450957 / 023-450968 / 023-450982</a><br>
+        <a href="mailto:pdr@mtc-man.com" style="color: #1e40af;">pdr@mtc-man.com</a>
+    </div>
+
+    <div style="margin: 8px 0;">
+        <strong> Marketing Service</strong><br>
+        <a href="tel:023-450957 / 023-450968 / 023-450982" style="color: #1e40af;">023-450957 / 023-450968 / 023-450982</a><br>
+        <a href="mailto:mehdi.laroui@mtc-man.com" style="color: #1e40af;">mehdi.laroui@mtc-man.com</a>
+    </div>
+
+    <p><strong>🌐 Website:</strong> <a href="https://mtc-man.com" target="_blank" style="color: #1e40af;">https://mtc-man.com</a></p>
+   `,
+                fichiers: [
+                    {
+                        type: "link",
+                        titre: "📞 Online contact form",
+                        url: "https://mtc-man.com/web/contact/",
+                        description: "Fill out the form"
+                    }
+                ]
+            }
+        };
+
+
+        // Initialisation de la scène 3D
+
+        window.addEventListener('load', function () {
+            const scene = new THREE.Scene();
+            scene.background = null;
+
+            const canvas = document.getElementById('canvas');
+            const container = document.querySelector('.avatar-container');
+
+            const camera = new THREE.PerspectiveCamera(
+                45,
+                container.offsetWidth / container.offsetHeight,
+                0.1,
+                1000
+            );
+
+            // Caméra reculée pour voir l'avatar agrandi
+            camera.position.set(0, 1.0, 3.5);
+            camera.lookAt(0, 0.8, 0);
+
+            const renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: true,
+                alpha: true
+            });
+
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            // Éclairage renforcé pour l'avatar agrandi
+            const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.8);
+            directionalLight.position.set(5, 10, 7);
+            scene.add(directionalLight);
+
+            const fillLight = new THREE.DirectionalLight(0x3b82f6, 1.0);
+            fillLight.position.set(-5, 5, -5);
+            scene.add(fillLight);
+
+            // Lumière supplémentaire pour mieux voir l'avatar agrandi
+            const rimLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            rimLight.position.set(0, 5, -5);
+            scene.add(rimLight);
+
+            // Charger l'avatar
+            const loader = new THREE.GLTFLoader();
+            const avatarUrl = 'https://raw.githubusercontent.com/asmabrn/avatar-3/main/test.glb';
+           
+
+            loader.load(
+                avatarUrl,
+                function (gltf) {
+                    console.log("✅ Avatar chargé avec succès!");
+                    document.getElementById('loading').style.display = 'none';
+
+                    model = gltf.scene;
+
+                    const box = new THREE.Box3().setFromObject(model);
+                    const size = box.getSize(new THREE.Vector3());
+                    const center = box.getCenter(new THREE.Vector3());
+
+                    // Ajustement pour centrer l'avatar
+                    model.position.x = -center.x;
+                    model.position.y = -center.y - 0.9; // Position ajustée
+                    model.position.z = -center.z;
+
+                    // Stocker la position Y de base
+                    baseYPosition = model.position.y;
+
+                    // Échelle AUGMENTÉE pour avatar plus grand
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    const scale = 3.8 / maxDim; // Augmenté de 2.8 à 3.8
+                    model.scale.set(scale, scale, scale);
+
+                    scene.add(model);
+
+                    let mixer = null;
+                    const clock = new THREE.Clock();
+
+                    if (gltf.animations && gltf.animations.length > 0) {
+                        mixer = new THREE.AnimationMixer(model);
+                        gltf.animations.forEach((clip) => {
+                            mixer.clipAction(clip).play();
+                        });
+                    }
+
+                    function animate() {
+                        requestAnimationFrame(animate);
+                        const delta = clock.getDelta();
+
+                        if (mixer) {
+                            mixer.update(delta);
+                        } else {
+                            model.rotation.y += 0.003;
+                        }
+
+                        // Animation quand il parle - seulement rotation
+                        if (isTyping && model) {
+                            const time = Date.now() * 0.001;
+                            model.rotation.y = Math.sin(time) * 0.1;
+                            model.position.y = baseYPosition;
+                        } else if (model) {
+                            model.position.y = baseYPosition;
+                        }
+
+                        renderer.render(scene, camera);
+                    }
+                    animate();
+
+                    // Redimensionnement responsive
+                    window.addEventListener('resize', function () {
+                        const newWidth = container.offsetWidth;
+                        const newHeight = container.offsetHeight;
+
+                        camera.aspect = newWidth / newHeight;
+                        camera.updateProjectionMatrix();
+                        renderer.setSize(newWidth, newHeight);
+                    });
+                },
+                function (progress) {
+                    const percent = (progress.loaded / progress.total * 100) || 0;
+                    document.getElementById('loading').innerHTML =
+                        `<div class="spinner"></div>Chargement: ${Math.round(percent)}%`;
+                },
+                function (error) {
+                    console.error('❌ Erreur de chargement:', error);
+                    document.getElementById('loading').innerHTML =
+                        '<span style="color: #ff6b6b;">❌ Erreur de chargement</span><br><small>Vérifiez la console</small>';
+
+                    // Créer un avatar de secours AGRANDI
+                    createFallbackAvatar(scene, renderer, camera, container);
+                }
+            );
+        });
+
+        // Fonction pour créer un avatar de secours AGRANDI
+        function createFallbackAvatar(scene, renderer, camera, container) {
+            // Corps AGRANDI
+            const bodyGeometry = new THREE.CapsuleGeometry(0.7, 1.4, 4, 8);
+            const bodyMaterial = new THREE.MeshPhongMaterial({
+                color: 0x3498db,
+                shininess: 30
+            });
+            const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+            body.position.y = 0.4;
+            scene.add(body);
+
+            // Tête AGRANDIE
+            const headGeometry = new THREE.SphereGeometry(0.4, 16, 16);
+            const headMaterial = new THREE.MeshPhongMaterial({
+                color: 0xf1c27d
+            });
+            const head = new THREE.Mesh(headGeometry, headMaterial);
+            head.position.y = 1.3;
+            scene.add(head);
+
+            // Yeux AGRANDIS
+            const eyeGeometry = new THREE.SphereGeometry(0.07, 8, 8);
+            const eyeMaterial = new THREE.MeshPhongMaterial({ color: 0x000000 });
+
+            const leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            leftEye.position.set(-0.12, 1.35, 0.3);
+            scene.add(leftEye);
+
+            const rightEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            rightEye.position.set(0.12, 1.35, 0.3);
+            scene.add(rightEye);
+
+            model = new THREE.Group();
+            model.add(body, head, leftEye, rightEye);
+
+            // Stocker la position de base
+            baseYPosition = model.position.y;
+
+            // Animation de secours sans mouvement vertical
+            function animate() {
+                requestAnimationFrame(animate);
+                model.rotation.y += 0.01;
+                model.position.y = baseYPosition;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            console.log("✅ Avatar de secours créé (version agrandie)");
+        }
+
+        // Fonction pour obtenir une réponse basée sur la base de connaissances
+        function getResponse(message) {
+            const lowerMessage = message.toLowerCase();
+
+            // Search in knowledge base
+            if (lowerMessage.includes('presentation') || lowerMessage.includes('who are you') || lowerMessage.includes('mtc') || lowerMessage.includes('maghreb truck')) {
+                return mtcKnowledgeBase.presentation.réponse;
+            } else if (lowerMessage.includes('mission') || lowerMessage.includes('purpose') || lowerMessage.includes('goal')) {
+                return mtcKnowledgeBase.mission.réponse;
+            } else if (lowerMessage.includes('vision')) {
+                return mtcKnowledgeBase.vision.réponse;
+            } else if (lowerMessage.includes('truck') || lowerMessage.includes('vehicle') || lowerMessage.includes('man') || lowerMessage.includes('tgs') || lowerMessage.includes('tgx') || lowerMessage.includes('tgm')) {
+                return mtcKnowledgeBase.trucks.réponse;
+            } else if (lowerMessage.includes('bus') || lowerMessage.includes('coach') || lowerMessage.includes('transport') || lowerMessage.includes('passenger')) {
+                return mtcKnowledgeBase.buses.réponse;
+            } else if (lowerMessage.includes('after-sales') || lowerMessage.includes('sav') || lowerMessage.includes('maintenance') || lowerMessage.includes('repair') || lowerMessage.includes('breakdown') || lowerMessage.includes('workshop')) {
+                return mtcKnowledgeBase.aftersales.réponse;
+            } else if (lowerMessage.includes('part') || lowerMessage.includes('spare') || lowerMessage.includes('pdr') || lowerMessage.includes('replacement')) {
+                return mtcKnowledgeBase.spareparts.réponse;
+            } else if (lowerMessage.includes('training') || lowerMessage.includes('formation') || lowerMessage.includes('learning') || lowerMessage.includes('eco-driving') || lowerMessage.includes('driver')) {
+                return mtcKnowledgeBase.training.réponse;
+            } else if (lowerMessage.includes('network') || lowerMessage.includes('agency') || lowerMessage.includes('location') || lowerMessage.includes('showroom')) {
+                return mtcKnowledgeBase.network.réponse;
+            } else if (lowerMessage.includes('contact') || lowerMessage.includes('phone') || lowerMessage.includes('email') || lowerMessage.includes('call') || lowerMessage.includes('reach') || lowerMessage.includes('coordinate')) {
+                return mtcKnowledgeBase.contact.réponse;
+            } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('good morning') || lowerMessage.includes('hey')) {
+                return "Hello! I'm MATIC, MTC's digital expert specialized in MAN solutions. I master the entire TGS, TGX, TGM range and our certified after-sales services. How can I optimize your transport business today?";
+            } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+                return "You're welcome! Don't hesitate if you have other questions about MTC and our MAN services. 😊";
+            } else {
+                return "I'm sorry, I didn't quite understand your question. I'm MATIC, MTC's expert in MAN solutions. My areas of expertiseare : missions , vision , sales , spare parts ,After-Sales,locations in Algeria\n\nWhich aspect of our  expertise can I advise you on?";
+            }
+        }
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            const messagesContainer = document.getElementById('messagesContainer');
+            const actionButtons = document.getElementById('actionButtons');
+
+            // Masquer les boutons d'action quand la conversation commence
+            actionButtons.style.display = 'none';
+
+            messagesContainer.classList.add('active');
+
+            addMessage(message, 'user');
+            input.value = '';
+
+            document.getElementById('sendBtn').disabled = true;
+            isTyping = true;
+
+            addMessage('Typing...', 'typing', 'typing-msg');
+
+            try {
+                // Simulation d'une réponse
+                setTimeout(() => {
+                    document.getElementById('typing-msg')?.remove();
+
+                    let response = getResponse(message);
+
+                    addMessage(response, 'assistant');
+                    document.getElementById('sendBtn').disabled = false;
+                    isTyping = false;
+                }, 1500);
+
+            } catch (error) {
+                console.error('Erreur:', error);
+                document.getElementById('typing-msg')?.remove();
+                addMessage("Désolé, une erreur s'est produite. Veuillez réessayer.", 'assistant');
+                document.getElementById('sendBtn').disabled = false;
+                isTyping = false;
+            }
+        }
+
+        function addMessage(text, type, id = null) {
+            const container = document.getElementById('messagesContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            if (id) messageDiv.id = id;
+
+            if (type === 'assistant') {
+                // Pour l'assistant, on permet le HTML
+                messageDiv.innerHTML = text;
+
+                // Ajouter les fichiers si présents dans la réponse
+                const currentResponse = getCurrentResponse(text);
+                if (currentResponse && currentResponse.fichiers) {
+                    const fichiersContainer = document.createElement('div');
+                    fichiersContainer.className = 'fichiers-container';
+                    fichiersContainer.style.marginTop = '10px';
+                    fichiersContainer.style.padding = '10px';
+                    fichiersContainer.style.background = 'rgba(255,255,255,0.1)';
+                    fichiersContainer.style.borderRadius = '8px';
+
+                    const titreFichiers = document.createElement('p');
+                    titreFichiers.innerHTML = '<strong>📎 Fichiers disponibles :</strong>';
+                    fichiersContainer.appendChild(titreFichiers);
+
+                    currentResponse.fichiers.forEach(fichier => {
+                        const lienFichier = document.createElement('a');
+                        lienFichier.href = fichier.url;
+                        lienFichier.target = '_blank';
+                        lienFichier.style.display = 'block';
+                        lienFichier.style.padding = '8px';
+                        lienFichier.style.margin = '5px 0';
+                        lienFichier.style.background = 'rgba(59, 130, 246, 0.8)';
+                        lienFichier.style.borderRadius = '6px';
+                        lienFichier.style.color = 'white';
+                        lienFichier.style.textDecoration = 'none';
+                        lienFichier.innerHTML = `${fichier.titre} <small style="opacity: 0.8;">- ${fichier.description}</small>`;
+
+                        fichiersContainer.appendChild(lienFichier);
+                    });
+
+                    messageDiv.appendChild(fichiersContainer);
+                }
+            } else {
+                // Pour l'utilisateur, on garde le texte simple
+                messageDiv.textContent = text;
+            }
+
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Fonction utilitaire pour retrouver la réponse actuelle
+        function getCurrentResponse(text) {
+            // Cette fonction devrait être adaptée selon votre structure
+            // Pour l'instant, retourne null - à adapter selon vos besoins
+            return null;
+        }
+
+        function quickQuestion(question) {
+            document.getElementById('userInput').value = question;
+            sendMessage();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+
+</html>
