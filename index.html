@@ -446,7 +446,7 @@
 
         <!-- Bulle de chat - RÉDUITE -->
         <div class="chat-bubble" id="chatBubble">
-            <h2>Hello Azul! I'm Aylan, MTC Assistant. I'm available 24/7 to answer your questions about our company. .</h2>
+            <h2>Hello! I'm AiMan, MTC Assistant. I'm available 24/7 to answer your questions about our company.</h2>
 
             <div class="messages-container" id="messagesContainer"></div>
 
@@ -480,272 +480,6 @@
 
         // Base de connaissances MTC SPA - Version améliorée
         const mtcKnowledgeBase = {
-            "presentation": {
-                question: "MTC Presentation",
-                réponse: `<p><strong>MTC (Maghreb Truck Company)</strong> is the exclusive dealer of MAN Truck & Bus in Algeria.</p>
-        <p>With <strong>over 15 years of experience</strong>, MTC offers complete solutions for goods and passenger transport with an extensive range of MAN industrial vehicles.</p>`
-            },
-
-            "mission": {
-                question: "MTC Mission",
-                réponse: `<p><strong>Our mission</strong> is to support Algerian transport professionals by offering them:</p>
-        <ul>
-            <li> Quality MAN vehicles</li>
-            <li> High-performance after-sales services</li>
-            <li> Spare parts sales</li>
-        </ul>`
-            },
-
-            "vision": {
-                question: "MTC Vision",
-                réponse: `<p><strong>Our vision</strong>: Bringing MAN closer to the Algerian market since 2003.</p>
-        <p><strong>Our mission</strong>: Adapt MAN solutions to the specificities of the Algerian territory (2.4M km², climate diversity).</p>
-        <p><strong>Our expertise</strong>: SKD assembly, national technical support, relationship based on trust and dedication.</p>
-        <p><strong>Our commitment</strong>: Strengthen the ties between MAN and Algeria on a long-term basis.</p>`
-            },
-
-            "trucks": {
-                question: "MAN Truck Range",
-                réponse: `<p><strong>MTC offers the complete range of MAN trucks:</strong></p>
-        
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> MAN TGS - For construction and worksites</h4>
-            <ul>
-                <li> 6x4, 8x4, 8x8 versions</li>
-                <li> GVW from 18 to 41 tons</li>
-                <li> Engines from 320 to 480 hp</li>
-            </ul>
-        </div>
-
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> MAN TGX - For long-distance transport</h4>
-            <ul>
-                <li> Optimal comfort for long journeys</li>
-                <li> Efficient engines to reduce consumption</li>
-                <li> Advanced safety technologies</li>
-            </ul>
-        </div>
-
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> MAN TGM - For urban distribution</h4>
-            <ul>
-                <li> Excellent maneuverability in cities</li>
-                <li> 4x2 and 6x2 versions</li>
-                <li> Ideal for urban delivery</li>
-            </ul>
-        </div>`,
-                fichiers: [
-                    {
-                        type: "link",
-                        titre: "📋 Download complete MAN catalog",
-                        url: "https://mtc-man.com/web/camions/",
-                        description: "PDF - 15MB"
-                    },
-                    {
-                        type: "link",
-                        titre: "🎬 Watch presentation video",
-                        url: "https://mtc-man.com/web/videos/camions/",
-                        description: "Video - 3min"
-                    }
-                ]
-            },
-
-            "buses": {
-                question: "MAN Bus Range",
-                réponse: `<p><strong>MTC also markets MAN buses and coaches:</strong></p>
-        
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> Urban buses - For public transport</h4>
-            <ul>
-                <li> Lions City for urban lines</li>
-                <li> Ecological solutions (CNG, electric)</li>
-                <li> PMR accessibility</li>
-            </ul>
-        </div>
-
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> Intercity coaches - For travel</h4>
-            <ul>
-                <li> Lions Coach for passenger comfort</li>
-                <li> Premium solutions for tourism</li>
-                <li> Long-distance comfort</li>
-            </ul>
-        </div>`,
-                fichiers: [
-                    {
-                        type: "link",
-                        titre: "📋 MAN Bus Catalog 2024",
-                        url: "https://mtc-man.com/web/bus/",
-                        description: "PDF - 12MB"
-                    }
-                ]
-            },
-
-            "aftersales": {
-                question: "MAN After-Sales Service",
-                réponse: `<p><strong>Our certified MAN after-sales network offers:</strong></p>
-        
-        <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
-            <h4 style="margin: 0 0 8px 0; color: #ff9900;"> Scheduled maintenance</h4>
-            <ul>
-                <li> Preventive maintenance according to manufacturer schedule</li>
-                <li> Regular technical inspections</li>
-                <li> Use of genuine MAN parts</li>
-            </ul>
-        </div>
-
-        <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
-            <h4 style="margin: 0 0 8px 0; color: #ff9900;"> 24/7 Breakdown service</h4>
-            <ul>
-                <li> Roadside assistance nationwide</li>
-                <li> Equipped breakdown vehicles</li>
-                <li> MAN-trained technicians</li>
-            </ul>
-        </div>
-
-        <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
-            <h4 style="margin: 0 0 8px 0; color: #ff9900;"> Repairs</h4>
-            <ul>
-                <li> Workshops equipped with latest diagnostic tools</li>
-                <li> Mechanical, bodywork, electrical repairs</li>
-                <li> Compliance with MAN quality standards</li>
-            </ul>
-        </div>
-
-        <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
-            <h4 style="margin: 0 0 8px 0; color: #ff9900;"> Maintenance contracts</h4>
-            <ul>
-                <li> Tailored solutions according to your usage</li>
-                <li> All-inclusive packages</li>
-                <li> Operating cost reduction</li>
-            </ul>
-        </div>`,
-                fichiers: [
-                    {
-                        type: "link",
-                        titre: "📄 MAN Maintenance Guide",
-                        url: "https://mtc-man.com/web/service-apres-vente/",
-                        description: "PDF - 8MB"
-                    },
-                    {
-                        type: "link",
-                        titre: "📋 After-Sales Brochure",
-                        url: "https://mtc-man.com/web/documents/sav-brochure.pdf",
-                        description: "PDF - 5MB"
-                    }
-                ]
-            },
-
-            "spareparts": {
-                question: "MAN Spare Parts",
-                réponse: `<p><strong>Parts Distribution Center (PDC)</strong></p>
-        
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> Our parts services:</h4>
-            <ul>
-                <li> Large stock of genuine MAN parts</li>
-                <li> Fast delivery throughout MTC network</li>
-                <li> Manufacturer warranty on all parts</li>
-                <li> Parts for all ranges (trucks, buses)</li>
-                <li> 24/7 emergency service for critical parts</li>
-            </ul>
-        </div>`,
-
-                fichiers: [
-                    {
-                        type: "link",
-                        titre: "📋 MAN Parts Catalog",
-                        url: "https://mtc-man.com/web/pièces-de-rechange/",
-                        description: "PDF - 20MB"
-                    },
-                    {
-                        type: "link",
-                        titre: "📞 Urgent parts contact",
-                        url: "tel:05512345680",
-                        description: "Direct call"
-                    }
-                ]
-            },
-
-            "training": {
-                question: "MTC Training Center",
-                réponse: `<p><strong>MTC Training Center - MAN certified training center</strong></p>
-        
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-            <h4 style="margin: 0 0 10px 0; color: #ff9900;"> Technical training</h4>
-            <ul>
-                <li> Diesel mechanics and electrical systems</li>
-                <li> Electronic diagnostics</li>
-                <li> Maintenance of new technologies</li>
-                <li> Specific training by vehicle range</li>
-            </ul>
-        </div>
-
-        <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-            <h4 style="margin: 0 0 10px 0; color: #ff9900;">👨‍💼 Driver training</h4>
-            <ul>
-                <li> Eco-driving to reduce consumption</li>
-                <li> Road safety</li>
-                <li> Good loading practices</li>
-                <li> Route optimization</li>
-            </ul>
-        </div>`,
-
-                fichiers: [
-                    {
-                        type: "link",
-                        titre: "📋 Training Catalog 2024",
-                        url: "https://mtc-man.com/web/formation/",
-                        description: "PDF - 10MB"
-                    },
-                    {
-                        type: "link",
-                        titre: "📝 Online registration",
-                        url: "https://mtc-man.com/web/formation/inscription/",
-                        description: "Form"
-                    }
-                ]
-            },
-
-            "network": {
-                question: "MTC Network in Algeria",
-                réponse: `<p><strong>Our national presence:</strong></p>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0;">
-            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
-                <strong>🏢 MTC Algiers</strong><br>Route de BLIDA-Oued El Kerma, 16005, BIRKHADEM 
-            </div>
-            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-ra
-            dius: 8px;">
-                <strong>🏢 MTC Oran</strong><br>4 Zone des Showrooms, Hai ANADJMA 
-            </div>
-            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
-                <strong>🏢 MTC Sétif</strong><br>Extension Zone Industrielle Lot n°161
-            </div>
-            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
-                <strong>🏢 MTC Laghouat</strong><br>Relai routier SONE, Route de Ghardaia, RN1
-            </div>
-            
-            <div style="padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">
-                <strong>🏢 BLIDA Factory</strong><br>Relai routier SONE, Route de Ghardaïa, RN1 Laghouat
-            </div>
-        </div>
-
-        <p><strong>All our showrooms feature:</strong></p>
-        <ul>
-            <li> Equipped after-sales </li>
-            <li> Spare parts stock</li>
-        </ul>`,
-                fichiers: [
-                    {
-                        type: "link",
-                        titre: "🗺️ Location map",
-                        url: "https://mtc-man.com/web/nos-implantations/",
-                        description: "PDF - 3MB"
-                    }
-                ]
-            },
-
             "contact": {
                 question: "Contact MTC",
                 réponse: `<p><strong>📞 MTC Algiers Contacts:</strong></p>
@@ -776,15 +510,213 @@
 
     <p><strong>🌐 Website:</strong> <a href="https://mtc-man.com" target="_blank" style="color: #1e40af;">https://mtc-man.com</a></p>
    `,
-                fichiers: [
-                    {
-                        type: "link",
-                        titre: "📞 Online contact form",
-                        url: "https://mtc-man.com/web/contact/",
-                        description: "Fill out the form"
-                    }
-                ]
-            }
+            },
+            "presentation": {
+                question: "MTC Presentation",
+                réponse: `<p><strong>MTC (Maghreb Truck Company)</strong> is the exclusive dealer of MAN Truck & Bus in Algeria.</p>
+        <p>With <strong>over 15 years of experience</strong>, MTC offers complete solutions for goods and passenger transport with an extensive range of MAN industrial vehicles.</p>`
+            },
+
+            "price_truck": {
+                question: "What is the price of this MAN truck?",
+                réponse: `<p><strong>Prices vary by configuration. I can help you choose the right model and provide an indicative offer before our sales team contacts you.</p>
+        `
+            },
+
+            "model_available": {
+                question: "Do you have this model available in stock?",
+                réponse: `<p><strong> I can check the current availability and show you the closest equivalent models if stock is limited.</p>
+        `
+            },
+
+            "delivery": {
+                question: "How long is the delivery time for a new truck?",
+                réponse: `<p><strong>Delivery time depends on configuration and production schedule. On average, it ranges from 6 to 14 weeks.</strong></p>`
+            },
+
+            "right_trucks": {
+                question: "Can you help me choose the right truck for my operation?",
+                réponse: `<p><strong>Absolutely. Tell me your load, route type, and annual mileage, and I will recommend the best MAN configuration.</strong></p>
+        
+        `,
+
+            },
+
+            "warning": {
+                question: "My truck has a warning light on, what should I do?",
+                réponse: `<p><strong> I can help identify the meaning of the warning light and guide you step-by-step. If needed, I’ll help you book a workshop appointment.</strong></p>
+        
+        `,
+
+            },
+
+            "workshop": {
+                question: "Where is the nearest MTC workshop?",
+                réponse: `<p><strong> I can locate the closest MAN/MTC service point and provide directions, contact, and opening hours.</strong></p>
+        
+        `,
+
+            },
+
+            "maitenance": {
+                question: "How much does preventive maintenance cost?",
+                réponse: `<p><strong> I can estimate maintenance costs based on your model, mileage, and operation type.</strong></p>
+        
+        `,
+
+
+            },
+
+            "spare_part": {
+                question: "Do you have the spare part I need?",
+                réponse: `<p><strong>Tell me the part number or describe the component, and I will check availability and alternatives.</strong></p>
+        
+       `,
+
+
+            },
+
+            "track_fleet": {
+                question: "Can I track my truck or fleet with you?",
+                réponse: `<p><strong> Yes. I provide access to fleet data, tracking status, and performance insights depending on your connected services.</strong></p>
+        
+        `,
+
+            },
+
+            "warranty_MAN": {
+                question: "What warranty do MAN trucks have?",
+                réponse: `<p><strong>Standard warranty is 1 year, extendable depending on model and usage. I can provide details for your exact vehicle.</strong></p>
+    
+           
+   `,
+
+            },
+
+            "financing_options": {
+                question: "Can you help me with financing options?",
+                réponse: `<p><strong> Yes. I can provide financing simulations and guide you toward the best plan based on your business.</strong></p>
+    
+           
+   `,
+
+            },
+            "training": {
+                question: "Do you offer driver training?",
+                réponse: `<p><strong>  Yes. MTC offers MAN-approved driver training programs. I can schedule a session for your drivers.</strong></p>
+    
+           
+   `,
+
+            },
+
+            "prix_camion": {
+                question: "Quel est le prix de ce camion MAN ?",
+                réponse: `<p><strong>  Le prix dépend de la configuration. Je peux vous proposer une estimation et vous orienter vers un commercial.</strong></p>
+    
+           
+   `,
+
+            },
+            "modele_stock": {
+                question: "“Avez-vous ce modèle en stock ?",
+                réponse: `<p><strong>  Je vérifie immédiatement la disponibilité et je peux vous proposer des modèles équivalents en cas de rupture.</strong></p>
+    
+           
+   `,
+
+            },
+            "delai_livraison": {
+                question: "“Quel est le délai de livraison pour un nouveau camion ?",
+                réponse: `<p><strong>   Le délai dépend de la configuration et du planning de production. En moyenne entre 6 et 14 semaines.</strong></p>
+    
+           
+   `,
+
+            },
+            "bon_camion": {
+                question: "“Pouvez-vous m’aider à choisir le bon camion pour mon activité ?",
+                réponse: `<p><strong> Oui. Donnez-moi le type de charge, votre parcours et le kilométrage annuel, et je vous propose la meilleure configuration MAN.</strong></p>
+    
+           
+   `,
+
+            },
+
+            "aide": {
+                question: "“J’ai un voyant qui s’allume, que dois-je faire ?",
+                réponse: `<p><strong> Je peux identifier le voyant et vous guider. Si nécessaire, je réserve un passage atelier pour vous.</strong></p>
+    
+           
+   `,
+
+            },
+            "mtc_proche": {
+                question: "“Où se trouve l’atelier MTC le plus proche ?",
+                réponse: `<p><strong>Je vous donne l’adresse, les horaires et le numéro du point de service le plus proche.</strong></p>
+    
+           
+   `,
+
+            },
+            "maitennance": {
+                question: "“Combien coûte une maintenance préventive ?",
+                réponse: `<p><strong>Je peux estimer le coût en fonction du modèle, du kilométrage et de votre utilisation.</strong></p>
+    
+           
+   `,
+
+            },
+
+            "piece_rechange": {
+                question: "“Avez-vous la pièce de rechange dont j’ai besoin ?",
+                réponse: `<p><strong> Indiquez-moi la référence ou décrivez la pièce, et je vérifie immédiatement le stock.</strong></p>
+    
+           
+   `,
+
+            },
+            "suivre_camion": {
+                question: "“Puis-je suivre mon camion ou ma flotte avec vous ?",
+                réponse: `<p><strong>Oui. Je peux vous donner les données de suivi, la position et les performances (selon les services connectés).</strong></p>
+    
+           
+   `,
+
+            },
+
+            "garantie_camion": {
+                question: "“Quelle est la garantie des camions MAN ?",
+                réponse: `<p><strong>La garantie standard est d’un an, avec des options d’extension selon le modèle.</strong></p>
+    
+           
+   `,
+
+            },
+
+            "aide_financement": {
+                question: "“Pouvez-vous m’aider pour le financement ?",
+                réponse: `<p><strong> Oui. Je peux vous proposer des simulations et vous orienter vers la meilleure solution.</strong></p>
+    
+           
+   `,
+
+            },
+
+            "formations": {
+                question: "“Proposez-vous des formations conducteurs ?",
+                réponse: `<p><strong>Oui. MTC propose des formations MAN certifiées. Je peux organiser une session pour vos chauffeurs.</strong></p>
+    
+           
+   `,
+
+            },
+
+
+
+
+
+
         };
 
 
@@ -837,7 +769,7 @@
             // Charger l'avatar
             const loader = new THREE.GLTFLoader();
             const avatarUrl = 'https://raw.githubusercontent.com/asmabrn/avatar-3/main/test.glb';
-           
+
 
             loader.load(
                 avatarUrl,
@@ -981,33 +913,68 @@
             const lowerMessage = message.toLowerCase();
 
             // Search in knowledge base
-            if (lowerMessage.includes('presentation') || lowerMessage.includes('who are you') || lowerMessage.includes('mtc') || lowerMessage.includes('maghreb truck')) {
+            
+            if (lowerMessage.includes('present') ) {
                 return mtcKnowledgeBase.presentation.réponse;
-            } else if (lowerMessage.includes('mission') || lowerMessage.includes('purpose') || lowerMessage.includes('goal')) {
-                return mtcKnowledgeBase.mission.réponse;
-            } else if (lowerMessage.includes('vision')) {
-                return mtcKnowledgeBase.vision.réponse;
-            } else if (lowerMessage.includes('truck') || lowerMessage.includes('vehicle') || lowerMessage.includes('man') || lowerMessage.includes('tgs') || lowerMessage.includes('tgx') || lowerMessage.includes('tgm')) {
-                return mtcKnowledgeBase.trucks.réponse;
-            } else if (lowerMessage.includes('bus') || lowerMessage.includes('coach') || lowerMessage.includes('transport') || lowerMessage.includes('passenger')) {
-                return mtcKnowledgeBase.buses.réponse;
-            } else if (lowerMessage.includes('after-sales') || lowerMessage.includes('sav') || lowerMessage.includes('maintenance') || lowerMessage.includes('repair') || lowerMessage.includes('breakdown') || lowerMessage.includes('workshop')) {
-                return mtcKnowledgeBase.aftersales.réponse;
-            } else if (lowerMessage.includes('part') || lowerMessage.includes('spare') || lowerMessage.includes('pdr') || lowerMessage.includes('replacement')) {
-                return mtcKnowledgeBase.spareparts.réponse;
-            } else if (lowerMessage.includes('training') || lowerMessage.includes('formation') || lowerMessage.includes('learning') || lowerMessage.includes('eco-driving') || lowerMessage.includes('driver')) {
+            }else if(lowerMessage.includes('price')) {
+                return mtcKnowledgeBase.price_truck.réponse;
+            } else if (lowerMessage.includes('model') || lowerMessage.includes('available')) {
+                return mtcKnowledgeBase.model_available.réponse;
+            } else if (lowerMessage.includes('delivery')) {
+                return mtcKnowledgeBase.delivery.réponse;
+            } else if (lowerMessage.includes('right truck') || lowerMessage.includes('operation')) {
+                return mtcKnowledgeBase.right_trucks.réponse;
+            } else if (lowerMessage.includes('warning light')) {
+                return mtcKnowledgeBase.warning.réponse;
+            } else if (lowerMessage.includes('nearest') || lowerMessage.includes('workshop')) {
+                return mtcKnowledgeBase.workshop.réponse;
+            } else if (lowerMessage.includes('preventive maitennance')) {
+                return mtcKnowledgeBase.maitenance.réponse;
+            } else if (lowerMessage.includes('spare') || lowerMessage.includes('part')) {
+                return mtcKnowledgeBase.spare_part.réponse;
+            } else if (lowerMessage.includes('track') || lowerMessage.includes('fleet')) {
+                return mtcKnowledgeBase.track_fleet.réponse;
+            } else if (lowerMessage.includes('warranty')) {
+                return mtcKnowledgeBase.warranty_MAN.réponse;
+            } else if (lowerMessage.includes('financing ')) {
+                return mtcKnowledgeBase.financing_options.réponse;
+            } else if (lowerMessage.includes('training')) {
                 return mtcKnowledgeBase.training.réponse;
-            } else if (lowerMessage.includes('network') || lowerMessage.includes('agency') || lowerMessage.includes('location') || lowerMessage.includes('showroom')) {
-                return mtcKnowledgeBase.network.réponse;
-            } else if (lowerMessage.includes('contact') || lowerMessage.includes('phone') || lowerMessage.includes('email') || lowerMessage.includes('call') || lowerMessage.includes('reach') || lowerMessage.includes('coordinate')) {
+            } else if (lowerMessage.includes('prix')) {
+                return mtcKnowledgeBase.prix_camion.réponse;
+            } else if (lowerMessage.includes('modèle')) {
+                return mtcKnowledgeBase.modele_stock.réponse;
+            } else if (lowerMessage.includes('délai') || lowerMessage.includes('livraison')) {
+                return mtcKnowledgeBase.delai_livraison.réponse;
+
+            } else if (lowerMessage.includes('bon') || lowerMessage.includes('activité')) {
+                return mtcKnowledgeBase.bon_camion.réponse;
+            } else if (lowerMessage.includes('voyant')) {
+                return mtcKnowledgeBase.aide.réponse;
+            } else if (lowerMessage.includes('atelier') || lowerMessage.includes('proche')) {
+                return mtcKnowledgeBase.mtc_proche.réponse;
+            } else if (lowerMessage.includes(' maintenance préventive')) {
+                return mtcKnowledgeBase.maitennance.réponse;
+            } else if (lowerMessage.includes('pièce de rechange')) {
+                return mtcKnowledgeBase.piece_rechange.réponse;
+            } else if (lowerMessage.includes('suivre') || lowerMessage.includes('flotte')) {
+                return mtcKnowledgeBase.suivre_camion.réponse;
+            } else if (lowerMessage.includes('garantie')) {
+                return mtcKnowledgeBase.garantie_camion.réponse;
+            } else if (lowerMessage.includes('aide') || lowerMessage.includes('financement')) {
+                return mtcKnowledgeBase.aide_financement.réponse;
+            } else if (lowerMessage.includes('formations')) {
+                return mtcKnowledgeBase.formations.réponse;
+            } else if (lowerMessage.includes('contact') || lowerMessage.includes('coordinate')) {
                 return mtcKnowledgeBase.contact.réponse;
             } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('good morning') || lowerMessage.includes('hey')) {
-                return "Hello! I'm MATIC, MTC's digital expert specialized in MAN solutions. I master the entire TGS, TGX, TGM range and our certified after-sales services. How can I optimize your transport business today?";
-            } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+                return "Hello! I'm AiMan, MTC's digital expert specialized in MAN solutions. How can I help you today?";
+            } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks') || lowerMessage.includes('merci')) {
                 return "You're welcome! Don't hesitate if you have other questions about MTC and our MAN services. 😊";
             } else {
                 return "I'm sorry, I didn't quite understand your question. I'm MATIC, MTC's expert in MAN solutions. My areas of expertiseare : missions , vision , sales , spare parts ,After-Sales,locations in Algeria\n\nWhich aspect of our  expertise can I advise you on?";
             }
+            
         }
         async function sendMessage() {
             const input = document.getElementById('userInput');
