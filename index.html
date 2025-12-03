@@ -28,7 +28,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.25) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(150, 150, 150, 0.15) 0%, transparent 50%);
@@ -40,6 +40,7 @@
             0% {
                 transform: translate(0, 0);
             }
+
             100% {
                 transform: translate(50px, 50px);
             }
@@ -52,8 +53,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(135deg, 
+            background-image:
+                linear-gradient(135deg,
                     rgba(40, 40, 40, 0.9) 0%,
                     rgba(70, 70, 70, 0.85) 50%,
                     rgba(30, 30, 30, 0.9) 100%),
@@ -71,6 +72,7 @@
             0% {
                 background-position: center, center;
             }
+
             100% {
                 background-position: center, calc(100% + 100px) calc(100% + 100px);
             }
@@ -85,9 +87,9 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(45deg,
-                rgba(0, 0, 0, 0.5) 0%,
-                rgba(50, 50, 50, 0.5) 50%,
-                rgba(0, 0, 0, 0.5) 100%);
+                    rgba(0, 0, 0, 0.5) 0%,
+                    rgba(50, 50, 50, 0.5) 50%,
+                    rgba(0, 0, 0, 0.5) 100%);
             z-index: 2;
         }
 
@@ -99,7 +101,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.04) 2px, rgba(255, 255, 255, 0.04) 4px),
                 repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px);
             z-index: 3;
@@ -115,12 +117,12 @@
             text-align: center;
             z-index: 10;
             padding: 15px;
-            background: linear-gradient(90deg, 
-                transparent 0%,
-                rgba(255, 255, 255, 0.1) 20%,
-                rgba(255, 255, 255, 0.15) 50%,
-                rgba(255, 255, 255, 0.1) 80%,
-                transparent 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.1) 20%,
+                    rgba(255, 255, 255, 0.15) 50%,
+                    rgba(255, 255, 255, 0.1) 80%,
+                    transparent 100%);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             animation: headerSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -131,6 +133,7 @@
                 transform: translateY(-100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -145,11 +148,11 @@
             text-shadow: none;
             letter-spacing: 2px;
             background: linear-gradient(90deg,
-                #ffffff 0%,
-                #dddddd 25%,
-                #aaaaaa 50%,
-                #dddddd 75%,
-                #ffffff 100%);
+                    #ffffff 0%,
+                    #dddddd 25%,
+                    #aaaaaa 50%,
+                    #dddddd 75%,
+                    #ffffff 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
@@ -165,9 +168,9 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg,
-                transparent 0%,
-                rgba(255, 255, 255, 0.4) 50%,
-                transparent 100%);
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.4) 50%,
+                    transparent 100%);
             -webkit-background-clip: text;
             background-clip: text;
             animation: shineOverlay 3s linear infinite;
@@ -218,8 +221,8 @@
             width: 80%;
             height: 80%;
             background: radial-gradient(circle at center,
-                rgba(59, 130, 246, 0.25) 0%,
-                transparent 70%);
+                    rgba(59, 130, 246, 0.25) 0%,
+                    transparent 70%);
             border-radius: 50%;
             filter: blur(50px);
             animation: pulse 4s ease-in-out infinite;
@@ -227,10 +230,13 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
                 opacity: 0.6;
             }
+
             50% {
                 transform: scale(1.1);
                 opacity: 0.9;
@@ -241,20 +247,23 @@
             width: 100% !important;
             height: 100% !important;
             display: block;
-            filter: 
-                drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8))
-                drop-shadow(0 0 40px rgba(59, 130, 246, 0.4));
+            filter:
+                drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 40px rgba(59, 130, 246, 0.4));
             transform-style: preserve-3d;
             animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) rotateX(0) rotateY(0);
             }
+
             33% {
                 transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
             }
+
             66% {
                 transform: translateY(10px) rotateX(-5deg) rotateY(-5deg);
             }
@@ -266,8 +275,8 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: linear-gradient(135deg,
-                rgba(40, 40, 40, 0.95) 0%,
-                rgba(60, 60, 60, 0.95) 100%);
+                    rgba(40, 40, 40, 0.95) 0%,
+                    rgba(60, 60, 60, 0.95) 100%);
             color: white;
             padding: 25px 50px;
             border-radius: 20px;
@@ -276,21 +285,24 @@
             z-index: 100;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 
+            box-shadow:
                 0 20px 40px rgba(0, 0, 0, 0.5),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
             animation: loadingPulse 2s ease-in-out infinite;
         }
 
         @keyframes loadingPulse {
-            0%, 100% {
-                box-shadow: 
+
+            0%,
+            100% {
+                box-shadow:
                     0 20px 40px rgba(0, 0, 0, 0.5),
                     inset 0 1px 0 rgba(255, 255, 255, 0.2),
                     0 0 30px rgba(59, 130, 246, 0.4);
             }
+
             50% {
-                box-shadow: 
+                box-shadow:
                     0 20px 40px rgba(0, 0, 0, 0.5),
                     inset 0 1px 0 rgba(255, 255, 255, 0.2),
                     0 0 50px rgba(59, 130, 246, 0.7);
@@ -315,14 +327,14 @@
             min-height: 400px;
             max-height: 70vh;
             background: linear-gradient(135deg,
-                rgba(119, 116, 116, 0.45) 0%,
-                rgba(70, 70, 70, 0.65) 50%,
-                rgba(50, 50, 50, 0.45) 100%);
+                    rgba(119, 116, 116, 0.45) 0%,
+                    rgba(70, 70, 70, 0.65) 50%,
+                    rgba(50, 50, 50, 0.45) 100%);
             backdrop-filter: blur(25px) saturate(180%);
             -webkit-backdrop-filter: blur(25px) saturate(180%);
             border-radius: 20px;
             padding: 20px;
-            box-shadow: 
+            box-shadow:
                 0 20px 40px -12px rgba(0, 0, 0, 0.5),
                 inset 0 1px 0 rgba(224, 221, 221, 0.25),
                 inset 0 -1px 0 rgba(0, 0, 0, 0.5),
@@ -342,6 +354,7 @@
                 opacity: 0;
                 transform: translateX(100px) scale(0.9);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0) scale(1);
@@ -356,10 +369,10 @@
             border-radius: 20px;
             padding: 2px;
             background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.4),
-                rgba(150, 150, 150, 0.2),
-                rgba(255, 255, 255, 0.4));
-            -webkit-mask: 
+                    rgba(255, 255, 255, 0.4),
+                    rgba(150, 150, 150, 0.2),
+                    rgba(255, 255, 255, 0.4));
+            -webkit-mask:
                 linear-gradient(#fff 0 0) content-box,
                 linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -371,6 +384,7 @@
             from {
                 background-position: 0% 0%;
             }
+
             to {
                 background-position: 200% 200%;
             }
@@ -393,10 +407,13 @@
         }
 
         @keyframes arrowFlow {
-            0%, 100% {
+
+            0%,
+            100% {
                 filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6));
                 opacity: 1;
             }
+
             50% {
                 filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.9));
                 opacity: 0.8;
@@ -430,8 +447,8 @@
             flex: 1;
             padding: 12px 15px;
             background: linear-gradient(135deg,
-                rgba(131, 127, 127, 0.85) 0%,
-                rgba(60, 60, 60, 0.85) 100%);
+                    rgba(131, 127, 127, 0.85) 0%,
+                    rgba(60, 60, 60, 0.85) 100%);
             color: #ffffff;
             border: none;
             border-radius: 10px;
@@ -443,7 +460,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            box-shadow: 
+            box-shadow:
                 0 4px 12px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.15);
             white-space: nowrap;
@@ -457,18 +474,18 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg,
-                transparent,
-                rgba(255, 255, 255, 0.15),
-                transparent);
+                    transparent,
+                    rgba(255, 255, 255, 0.15),
+                    transparent);
             transition: left 0.5s ease;
         }
 
         .action-btn:hover {
             transform: translateY(-3px) scale(1.02);
             background: linear-gradient(135deg,
-                rgba(50, 50, 50, 0.95) 0%,
-                rgba(70, 70, 70, 0.95) 100%);
-            box-shadow: 
+                    rgba(50, 50, 50, 0.95) 0%,
+                    rgba(70, 70, 70, 0.95) 100%);
+            box-shadow:
                 0 6px 20px rgba(0, 0, 0, 0.4),
                 0 0 25px rgba(59, 130, 246, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -485,15 +502,16 @@
             margin-bottom: 15px;
             padding: 15px;
             background: linear-gradient(135deg,
-                rgba(40, 40, 40, 0.45) 0%,
-                rgba(50, 50, 50, 0.65) 100%);
+                    rgba(40, 40, 40, 0.45) 0%,
+                    rgba(50, 50, 50, 0.65) 100%);
             backdrop-filter: blur(15px);
             border-radius: 12px;
             display: none;
             border: 1px solid rgba(255, 255, 255, 0.15);
             min-height: 200px;
             max-height: calc(70vh - 200px);
-            overflow-x: hidden; /* Empêche le défilement horizontal */
+            overflow-x: hidden;
+            /* Empêche le défilement horizontal */
             width: 100%;
             box-sizing: border-box;
         }
@@ -509,6 +527,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -537,43 +556,47 @@
             animation: slideIn 0.4s ease;
             font-size: 0.9rem;
             position: relative;
-            overflow: visible; /* Changé de hidden à visible */
+            overflow: visible;
+            /* Changé de hidden à visible */
             width: auto;
-            max-width: 100%; /* Garantit que le message ne dépasse pas */
+            max-width: 100%;
+            /* Garantit que le message ne dépasse pas */
             box-sizing: border-box;
             word-wrap: break-word;
             overflow-wrap: break-word;
-            white-space: normal; /* IMPORTANT: permet le retour à la ligne */
+            white-space: normal;
+            /* IMPORTANT: permet le retour à la ligne */
             word-break: break-word;
         }
 
         /* Style spécifique pour les messages d'assistant (réponses) */
         .message.assistant {
             background: linear-gradient(135deg,
-                rgba(55, 55, 55, 0.95) 0%,
-                rgba(70, 70, 70, 0.95) 100%);
+                    rgba(55, 55, 55, 0.95) 0%,
+                    rgba(70, 70, 70, 0.95) 100%);
             color: #f0f0f0;
             align-self: flex-start;
             margin-right: auto;
             margin-left: 0;
             backdrop-filter: blur(10px);
-            box-shadow: 
+            box-shadow:
                 0 4px 12px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            max-width: 90%; /* Réduit pour éviter les débordements */
+            max-width: 90%;
+            /* Réduit pour éviter les débordements */
         }
 
         /* Style pour les messages utilisateur */
         .message.user {
             background: linear-gradient(135deg,
-                rgba(30, 64, 175, 0.95) 0%,
-                rgba(37, 99, 235, 0.95) 100%);
+                    rgba(30, 64, 175, 0.95) 0%,
+                    rgba(37, 99, 235, 0.95) 100%);
             color: white;
             align-self: flex-end;
             margin-left: auto;
             margin-right: 0;
             backdrop-filter: blur(10px);
-            box-shadow: 
+            box-shadow:
                 0 4px 12px rgba(30, 64, 175, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.25);
             max-width: 90%;
@@ -587,7 +610,8 @@
             max-width: 100%;
             overflow-wrap: break-word;
             word-break: break-word;
-            white-space: normal; /* ESSENTIEL: permet aux éléments HTML de faire des retours à la ligne */
+            white-space: normal;
+            /* ESSENTIEL: permet aux éléments HTML de faire des retours à la ligne */
         }
 
         /* Style spécifique pour les liens */
@@ -596,7 +620,8 @@
             text-decoration: none;
             display: inline-block;
             max-width: 100%;
-            word-break: break-all; /* Permet de casser les URLs longs */
+            word-break: break-all;
+            /* Permet de casser les URLs longs */
         }
 
         .message.assistant a:hover {
@@ -628,9 +653,9 @@
             right: 0;
             height: 1px;
             background: linear-gradient(90deg,
-                transparent,
-                rgba(255, 255, 255, 0.25),
-                transparent);
+                    transparent,
+                    rgba(255, 255, 255, 0.25),
+                    transparent);
         }
 
         @keyframes slideIn {
@@ -638,6 +663,7 @@
                 opacity: 0;
                 transform: translateY(15px) scale(0.95);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -646,8 +672,8 @@
 
         .message.typing {
             background: linear-gradient(135deg,
-                rgba(70, 70, 70, 0.85) 0%,
-                rgba(90, 90, 90, 0.85) 100%);
+                    rgba(70, 70, 70, 0.85) 0%,
+                    rgba(90, 90, 90, 0.85) 100%);
             color: #a0aec0;
             font-style: italic;
             position: relative;
@@ -661,9 +687,19 @@
         }
 
         @keyframes typing {
-            0%, 100% { content: '.'; }
-            33% { content: '..'; }
-            66% { content: '...'; }
+
+            0%,
+            100% {
+                content: '.';
+            }
+
+            33% {
+                content: '..';
+            }
+
+            66% {
+                content: '...';
+            }
         }
 
         /* Input de chat */
@@ -671,12 +707,12 @@
             display: flex;
             gap: 10px;
             background: linear-gradient(135deg,
-                rgba(50, 50, 50, 0.85) 0%,
-                rgba(60, 60, 60, 0.85) 100%);
+                    rgba(50, 50, 50, 0.85) 0%,
+                    rgba(60, 60, 60, 0.85) 100%);
             backdrop-filter: blur(15px);
             border-radius: 12px;
             padding: 8px;
-            box-shadow: 
+            box-shadow:
                 0 6px 25px rgba(0, 0, 0, 0.5),
                 inset 0 1px 0 rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -696,9 +732,9 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg,
-                transparent,
-                rgba(255, 255, 255, 0.08),
-                transparent);
+                    transparent,
+                    rgba(255, 255, 255, 0.08),
+                    transparent);
             animation: shimmer 3s infinite;
         }
 
@@ -706,6 +742,7 @@
             0% {
                 left: -100%;
             }
+
             100% {
                 left: 100%;
             }
@@ -733,7 +770,7 @@
 
         #userInput:focus {
             background: rgba(50, 50, 50, 0.85);
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px rgba(59, 130, 246, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
@@ -746,9 +783,9 @@
         #sendBtn {
             padding: 12px 25px;
             background: linear-gradient(135deg,
-                #1e40af 0%,
-                #1e3a8a 50%,
-                #1e40af 100%);
+                    #1e40af 0%,
+                    #1e3a8a 50%,
+                    #1e40af 100%);
             background-size: 200% 100%;
             color: white;
             border: none;
@@ -759,7 +796,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 
+            box-shadow:
                 0 4px 15px rgba(30, 64, 175, 0.5),
                 inset 0 1px 0 rgba(255, 255, 255, 0.25);
             flex-shrink: 0;
@@ -773,7 +810,7 @@
         #sendBtn:hover {
             background-position: 100% 0;
             transform: translateY(-1px);
-            box-shadow: 
+            box-shadow:
                 0 6px 25px rgba(30, 64, 175, 0.7),
                 0 0 25px rgba(30, 64, 175, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.35);
@@ -788,8 +825,8 @@
             cursor: not-allowed;
             transform: none;
             background: linear-gradient(135deg,
-                #5a6575 0%,
-                #3a4555 100%);
+                    #5a6575 0%,
+                    #3a4555 100%);
         }
 
         /* Effets de lumière avec plus de luminosité */
@@ -799,8 +836,8 @@
             height: 350px;
             border-radius: 50%;
             background: radial-gradient(circle,
-                rgba(59, 130, 246, 0.15) 0%,
-                transparent 70%);
+                    rgba(59, 130, 246, 0.15) 0%,
+                    transparent 70%);
             filter: blur(70px);
             z-index: 2;
             animation: lightMove 20s linear infinite;
@@ -819,15 +856,20 @@
         }
 
         @keyframes lightMove {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(0, 0) scale(1);
             }
+
             25% {
                 transform: translate(100px, -50px) scale(1.1);
             }
+
             50% {
                 transform: translate(-50px, 100px) scale(0.9);
             }
+
             75% {
                 transform: translate(-100px, -50px) scale(1.1);
             }
@@ -838,10 +880,12 @@
             .header h1 {
                 font-size: 2.2rem;
             }
+
             .chat-bubble {
                 padding: 20px;
                 width: 35%;
             }
+
             .avatar-container {
                 width: 60%;
             }
@@ -851,9 +895,11 @@
             .main-container {
                 padding: 120px 40px 40px;
             }
+
             .avatar-container {
                 width: 55%;
             }
+
             .chat-bubble {
                 width: 40%;
             }
@@ -868,12 +914,14 @@
                 height: auto;
                 min-height: 100vh;
             }
+
             .avatar-container {
                 width: 80%;
                 height: 450px;
                 margin-bottom: 20px;
                 margin-left: 0;
             }
+
             .chat-bubble {
                 width: 85%;
                 min-height: 500px;
@@ -882,18 +930,23 @@
                 max-height: 500px;
                 height: auto;
             }
+
             .chat-bubble::after {
                 display: none;
             }
+
             .header h1 {
                 font-size: 2rem;
             }
+
             .messages-container {
                 max-height: 350px;
             }
+
             .action-buttons {
                 flex-direction: row;
             }
+
             .action-btn {
                 padding: 10px 12px;
                 font-size: 0.85rem;
@@ -904,34 +957,42 @@
             .main-container {
                 padding: 120px 25px 25px;
             }
+
             .chat-bubble {
                 width: 95%;
                 padding: 15px;
                 min-height: 450px;
                 max-height: 450px;
             }
+
             .avatar-container {
                 width: 95%;
                 height: 350px;
             }
+
             .header h1 {
                 font-size: 1.8rem;
                 letter-spacing: 1px;
             }
+
             .chat-bubble h2 {
                 font-size: 1.1rem;
             }
+
             #sendBtn {
                 min-width: 70px;
                 padding: 10px 20px;
             }
+
             .messages-container {
                 max-height: 300px;
             }
+
             .action-buttons {
                 flex-direction: row;
                 gap: 8px;
             }
+
             .action-btn {
                 padding: 10px 12px;
                 font-size: 0.8rem;
@@ -942,26 +1003,32 @@
             .header h1 {
                 font-size: 1.4rem;
             }
+
             .chat-bubble {
                 padding: 12px;
                 min-height: 400px;
                 max-height: 400px;
             }
+
             .action-btn {
                 padding: 8px 10px;
                 font-size: 0.75rem;
             }
+
             #userInput {
                 padding: 10px 14px;
             }
+
             #sendBtn {
                 min-width: 65px;
                 padding: 10px 15px;
                 font-size: 0.9rem;
             }
+
             .messages-container {
                 max-height: 250px;
             }
+
             .action-buttons {
                 flex-direction: column;
                 gap: 8px;
@@ -974,7 +1041,7 @@
     <!-- Effets de lumière avec plus de luminosité -->
     <div class="light-effect"></div>
     <div class="light-effect"></div>
-    
+
     <!-- Background avec image du camion -->
     <div class="background"></div>
 
@@ -1031,191 +1098,257 @@
         // Base de connaissances MTC SPA
         const mtcKnowledgeBase = {
             "contact": {
-                question: "Contact MTC",
+                keywords: ["contact", "contacts", "phone", "email", "coordinate", "coordonnées", "téléphone", "mail"],
                 réponse: `<div class="message-content">
-                    <p><strong>📞 MTC Algiers Contacts:</strong></p>
-                    
-                    <div style="margin: 8px 0;">
-                        <strong>Commercial Service</strong><br>
-                        <a href="tel:023-450290 / 023-450965 / 023-450966">023-450290 / 023-450965 / 023-450966</a><br>
-                        <a href="mailto:service.commercial@mtc-man.com">service.commercial@mtc-man.com</a>
-                    </div>
-                    
-                    <div style="margin: 8px 0;">
-                        <strong>After-Sales Service</strong><br>
-                        <a href="tel:023-450970">023-450970</a><br>
-                        <a href="mailto:sav@mtc-man.com">sav@mtc-man.com</a>
-                    </div>
-                    
-                    <div style="margin: 8px 0;">
-                        <strong>Spare Parts</strong><br>
-                        <a href="tel:023-450957 / 023-450968 / 023-450982">023-450957 / 023-450968 / 023-450982</a><br>
-                        <a href="mailto:pdr@mtc-man.com">pdr@mtc-man.com</a>
-                    </div>
-                    
-                    <div style="margin: 8px 0;">
-                        <strong>Marketing Service</strong><br>
-                        <a href="tel:023-450957 / 023-450968 / 023-450982">023-450957 / 023-450968 / 023-450982</a><br>
-                        <a href="mailto:mehdi.laroui@mtc-man.com">mehdi.laroui@mtc-man.com</a>
-                    </div>
-                    
-                    <p><strong>🌐 Website:</strong> <a href="https://mtc-man.com" target="_blank">https://mtc-man.com</a></p>
-                </div>`
+                <p><strong>📞 MTC Algiers Contacts:</strong></p>
+                
+                <div style="margin: 8px 0;">
+                    <strong>Commercial Service</strong><br>
+                    <a href="tel:023-450290 / 023-450965 / 023-450966">023-450290 / 023-450965 / 023-450966</a><br>
+                    <a href="mailto:service.commercial@mtc-man.com">service.commercial@mtc-man.com</a>
+                </div>
+                
+                <div style="margin: 8px 0;">
+                    <strong>After-Sales Service</strong><br>
+                    <a href="tel:023-450970">023-450970</a><br>
+                    <a href="mailto:sav@mtc-man.com">sav@mtc-man.com</a>
+                </div>
+                
+                <div style="margin: 8px 0;">
+                    <strong>Spare Parts</strong><br>
+                    <a href="tel:023-450957 / 023-450968 / 023-450982">023-450957 / 023-450968 / 023-450982</a><br>
+                    <a href="mailto:pdr@mtc-man.com">pdr@mtc-man.com</a>
+                </div>
+                
+                <div style="margin: 8px 0;">
+                    <strong>Marketing Service</strong><br>
+                    <a href="tel:023-450957 / 023-450968 / 023-450982">023-450957 / 023-450968 / 023-450982</a><br>
+                    <a href="mailto:mehdi.laroui@mtc-man.com">mehdi.laroui@mtc-man.com</a>
+                </div>
+                
+                <p><strong>🌐 Website:</strong> <a href="https://mtc-man.com" target="_blank">https://mtc-man.com</a></p>
+            </div>`
             },
             "presentation": {
-                question: "MTC Presentation",
+                keywords: ["present", "presentation", "introduce", "about", "présenter", "présentation", "à propos"],
                 réponse: `<div class="message-content">
-                    <p><strong>MTC (Maghreb Truck Company)</strong> is the exclusive dealer of MAN Truck & Bus in Algeria.</p>
-                    <p>With <strong>over 23 years of experience</strong>, MTC offers complete solutions for goods and passenger transport with an extensive range of MAN industrial vehicles.</p>
-                </div>`
+                <p><strong>MTC (Maghreb Truck Company)</strong> is the exclusive dealer of MAN Truck & Bus in Algeria.</p>
+                <p>With <strong>over 23 years of experience</strong>, MTC offers complete solutions for goods and passenger transport with an extensive range of MAN industrial vehicles.</p>
+            </div>`
+            },
+            "need_truck": {
+                keywords: ["need a truck", "want a truck", "looking for a truck", "buy a truck", "acheter un camion", "besoin d'un camion"],
+                réponse: `<div class="message-content">
+                <p><strong>Of course. Could you please tell me the application of the truck?</strong></p>
+                <p>Is it for construction, logistics, long-haul transport, tanker, or any specific mission?</p>
+            </div>`
+            },
+            "mineral_water": {
+                keywords: ["mineral water", "water transport", "transporting mineral water", "eau minérale", "transport d'eau", "bottled water"],
+                réponse: `<div class="message-content">
+                <p><strong>Thank you. For mineral water transport, you need a fuel-efficient and reliable 4x2 tractor optimized for long-distance distribution.</strong></p>
+                <p>Based on your mission, I recommend the:</p>
+                <p><strong>MAN TGS 18.440 BLS (4x2)</strong></p>
+                <p>A robust, efficient tractor with excellent fuel economy and a very competitive TCO.</p>
+            </div>`
+            },
+            "datasheet": {
+                keywords: ["technical datasheet", "datasheet", "technical sheet", "fiche technique", "spécifications", "specs", "can i get the technical datasheet"],
+                réponse: `<div class="message-content">
+                <p><strong>Absolutely.</strong></p>
+                <p>You can access the full technical sheet via the following link:</p>
+                <p><strong>www.man-mtc.com/FT</strong></p>
+                <p>Or contact our commercial department directly at: <strong>023 45 09 66</strong></p>
+                <p>One of our advisors will be happy to assist you and send you the full documentation.</p>
+                <p>Would you like me to prepare a quotation or check the estimated delivery time?</p>
+            </div>`
+            },
+            "after_sales": {
+                keywords: ["after-sales", "after sales", "support", "need after-sales support", "after-sales support", "sav", "service après-vente"],
+                réponse: `<div class="message-content">
+                <p><strong>Of course. Could you tell me the type of issue you're facing with your vehicle?</strong></p>
+            </div>`
+            },
+            "mechanical_issue": {
+                keywords: ["mechanical issue", "mechanical problem", "need a repair", "repair", "problème mécanique", "panne", "défaillance"],
+                réponse: `<div class="message-content">
+                <p><strong>I can help you with that.</strong></p>
+                <p>To assist you properly, I need a few details:</p>
+                <ul>
+                    <li>The vehicle chassis number (VIN)</li>
+                    <li>The model</li>
+                    <li>A brief description of the problem</li>
+                    <li>And whether the truck is immobilized or still drivable.</li>
+                </ul>
+            </div>`
+            },
+            "immobilized": {
+                keywords: ["immobilized", "immobilised", "not drivable", "broken down", "won't move", "immobilisé", "ne bouge plus", "en panne"],
+                réponse: `<div class="message-content">
+                <p><strong>Understood.</strong></p>
+                <p>For immobilized vehicles, our After-Sales team will give you priority assistance.</p>
+                <p>You can reach our SAV directly at:</p>
+                <p><strong>023 45 09 80</strong></p>
+                <p>Or visit our workshop at MTC Birkhadem, open from 8:00 to 17:00.</p>
+            </div>`
             },
             "price_truck": {
-                question: "What is the price of this MAN truck?",
+                keywords: ["price", "cost", "how much", "prix", "coût", "combien"],
                 réponse: `<div class="message-content">
-                    <p><strong>Prices vary by configuration.</strong> I can help you choose the right model and provide an indicative offer before our sales team contacts you.</p>
-                </div>`
+                <p><strong>Prices vary by configuration. I can help you choose the right model and provide an indicative offer before our sales team contacts you.</strong></p>
+            </div>`
             },
             "model_available": {
-                question: "Do you have this model available in stock?",
+                keywords: ["model available", "in stock", "available", "disponible", "en stock"],
                 réponse: `<div class="message-content">
-                    <p><strong>I can check the current availability and show you the closest equivalent models if stock is limited.</strong></p>
-                </div>`
+                <p><strong>I can check the current availability and show you the closest equivalent models if stock is limited.</strong></p>
+            </div>`
             },
             "delivery": {
-                question: "How long is the delivery time for a new truck?",
+                keywords: ["delivery time", "delivery", "lead time", "délai", "livraison"],
                 réponse: `<div class="message-content">
-                    <p><strong>Delivery time depends on configuration and production schedule. On average, it ranges from 6 to 14 weeks.</strong></p>
-                </div>`
+                <p><strong>Delivery time depends on configuration and production schedule. On average, it ranges from 6 to 14 weeks.</strong></p>
+            </div>`
             },
             "right_trucks": {
-                question: "Can you help me choose the right truck for my operation?",
+                keywords: ["right truck", "choose truck", "which truck", "quel camion", "choisir"],
                 réponse: `<div class="message-content">
-                    <p><strong>Absolutely.</strong> Tell me your load, route type, and annual mileage, and I will recommend the best MAN configuration.</p>
-                </div>`
+                <p><strong>Absolutely. Tell me your load, route type, and annual mileage, and I will recommend the best MAN configuration.</strong></p>
+            </div>`
             },
             "warning": {
-                question: "My truck has a warning light on, what should I do?",
+                keywords: ["warning light", "warning", "light on", "voyant", "alerte"],
                 réponse: `<div class="message-content">
-                    <p><strong>I can help identify the meaning of the warning light and guide you step-by-step.</strong> If needed, I'll help you book a workshop appointment.</p>
-                </div>`
+                <p><strong>I can help identify the meaning of the warning light and guide you step-by-step. If needed, I'll help you book a workshop appointment.</strong></p>
+            </div>`
             },
             "workshop": {
-                question: "Where is the nearest MTC workshop?",
+                keywords: ["nearest workshop", "workshop", "service center", "atelier", "centre service"],
                 réponse: `<div class="message-content">
-                    <p><strong>I can locate the closest MAN/MTC service point and provide directions, contact, and opening hours.</strong></p>
-                </div>`
+                <p><strong>I can locate the closest MAN/MTC service point and provide directions, contact, and opening hours.</strong></p>
+            </div>`
             },
-            "maitenance": {
-                question: "How much does preventive maintenance cost?",
+            "maintenance": {
+                keywords: ["preventive maintenance", "maintenance cost", "maintenance", "entretien", "maintenance préventive"],
                 réponse: `<div class="message-content">
-                    <p><strong>I can estimate maintenance costs based on your model, mileage, and operation type.</strong></p>
-                </div>`
+                <p><strong>I can estimate maintenance costs based on your model, mileage, and operation type.</strong></p>
+            </div>`
             },
             "spare_part": {
-                question: "Do you have the spare part I need?",
+                keywords: ["spare part", "part", "component", "pièce", "rechange", "composant"],
                 réponse: `<div class="message-content">
-                    <p><strong>Tell me the part number or describe the component, and I will check availability and alternatives.</strong></p>
-                </div>`
+                <p><strong>Tell me the part number or describe the component, and I will check availability and alternatives.</strong></p>
+            </div>`
             },
             "track_fleet": {
-                question: "Can I track my truck or fleet with you?",
+                keywords: ["track", "fleet", "tracking", "suivre", "flotte", "localisation"],
                 réponse: `<div class="message-content">
-                    <p><strong>Yes.</strong> I provide access to fleet data, tracking status, and performance insights depending on your connected services.</p>
-                </div>`
+                <p><strong>Yes. I provide access to fleet data, tracking status, and performance insights depending on your connected services.</strong></p>
+            </div>`
             },
-            "warranty_MAN": {
-                question: "What warranty do MAN trucks have?",
+            "warranty": {
+                keywords: ["warranty", "guarantee", "garantie"],
                 réponse: `<div class="message-content">
-                    <p><strong>Standard warranty is 1 year, extendable depending on model and usage.</strong> I can provide details for your exact vehicle.</p>
-                </div>`
+                <p><strong>Standard warranty is 1 year, extendable depending on model and usage. I can provide details for your exact vehicle.</strong></p>
+            </div>`
             },
-            "financing_options": {
-                question: "Can you help me with financing options?",
+            "financing": {
+                keywords: ["financing", "finance", "loan", "credit", "financement", "crédit"],
                 réponse: `<div class="message-content">
-                    <p><strong>Yes.</strong> I can provide financing simulations and guide you toward the best plan based on your business.</p>
-                </div>`
+                <p><strong>Yes. I can provide financing simulations and guide you toward the best plan based on your business.</strong></p>
+            </div>`
             },
             "training": {
-                question: "Do you offer driver training?",
+                keywords: ["driver training", "training", "formation", "conducteur"],
                 réponse: `<div class="message-content">
-                    <p><strong>Yes.</strong> MTC offers MAN-approved driver training programs. I can schedule a session for your drivers.</p>
-                </div>`
+                <p><strong>Yes. MTC offers MAN-approved driver training programs. I can schedule a session for your drivers.</strong></p>
+            </div>`
             },
-            "prix_camion": {
-                question: "Quel est le prix de ce camion MAN ?",
+            "hello": {
+                keywords: ["hello", "hi", "hey", "good morning", "good afternoon", "bonjour", "salut"],
                 réponse: `<div class="message-content">
-                    <p><strong>Le prix dépend de la configuration.</strong> Je peux vous proposer une estimation et vous orienter vers un commercial.</p>
-                </div>`
+                <p><strong>Hello! How can I assist you today?</strong></p>
+            </div>`
             },
-            "modele_stock": {
-                question: "Avez-vous ce modèle en stock ?",
+            "thank_you": {
+                keywords: ["thank", "thanks", "merci", "thank you"],
                 réponse: `<div class="message-content">
-                    <p><strong>Je vérifie immédiatement la disponibilité</strong> et je peux vous proposer des modèles équivalents en cas de rupture.</p>
-                </div>`
-            },
-            "delai_livraison": {
-                question: "Quel est le délai de livraison pour un nouveau camion ?",
-                réponse: `<div class="message-content">
-                    <p><strong>Le délai dépend de la configuration et du planning de production.</strong> En moyenne entre 6 et 14 semaines.</p>
-                </div>`
-            },
-            "bon_camion": {
-                question: "Pouvez-vous m'aider à choisir le bon camion pour mon activité ?",
-                réponse: `<div class="message-content">
-                    <p><strong>Oui.</strong> Donnez-moi le type de charge, votre parcours et le kilométrage annuel, et je vous propose la meilleure configuration MAN.</p>
-                </div>`
-            },
-            "aide": {
-                question: "J'ai un voyant qui s'allume, que dois-je faire ?",
-                réponse: `<div class="message-content">
-                    <p><strong>Je peux identifier le voyant et vous guider.</strong> Si nécessaire, je réserve un passage atelier pour vous.</p>
-                </div>`
-            },
-            "mtc_proche": {
-                question: "Où se trouve l'atelier MTC le plus proche ?",
-                réponse: `<div class="message-content">
-                    <p><strong>Je vous donne l'adresse, les horaires et le numéro du point de service le plus proche.</strong></p>
-                </div>`
-            },
-            "maitennance": {
-                question: "Combien coûte une maintenance préventive ?",
-                réponse: `<div class="message-content">
-                    <p><strong>Je peux estimer le coût en fonction du modèle, du kilométrage et de votre utilisation.</strong></p>
-                </div>`
-            },
-            "piece_rechange": {
-                question: "Avez-vous la pièce de rechange dont j'ai besoin ?",
-                réponse: `<div class="message-content">
-                    <p><strong>Indiquez-moi la référence ou décrivez la pièce, et je vérifie immédiatement le stock.</strong></p>
-                </div>`
-            },
-            "suivre_camion": {
-                question: "Puis-je suivre mon camion ou ma flotte avec vous ?",
-                réponse: `<div class="message-content">
-                    <p><strong>Oui.</strong> Je peux vous donner les données de suivi, la position et les performances (selon les services connectés).</p>
-                </div>`
-            },
-            "garantie_camion": {
-                question: "Quelle est la garantie des camions MAN ?",
-                réponse: `<div class="message-content">
-                    <p><strong>La garantie standard est d'un an, avec des options d'extension selon le modèle.</strong></p>
-                </div>`
-            },
-            "aide_financement": {
-                question: "Pouvez-vous m'aider pour le financement ?",
-                réponse: `<div class="message-content">
-                    <p><strong>Oui.</strong> Je peux vous proposer des simulations et vous orienter vers la meilleure solution.</p>
-                </div>`
-            },
-            "formations": {
-                question: "Proposez-vous des formations conducteurs ?",
-                réponse: `<div class="message-content">
-                    <p><strong>Oui.</strong> MTC propose des formations MAN certifiées. Je peux organiser une session pour vos chauffeurs.</p>
-                </div>`
+                <p><strong>You're welcome! Don't hesitate if you have other questions about MTC and our MAN services. 😊</strong></p>
+            </div>`
             }
         };
 
-        // Initialisation de la scène 3D
+        // Fonction intelligente pour trouver la réponse
+        function getResponse(message) {
+            const lowerMessage = message.toLowerCase().trim();
+
+            // D'abord vérifier les salutations courtes
+            if (lowerMessage === "hello aiman" || lowerMessage === "hello" || lowerMessage === "hi" || lowerMessage === "hey" || lowerMessage === "bonjour") {
+                return mtcKnowledgeBase.hello.réponse;
+            }
+
+            // Vérifier les remerciements
+            if (lowerMessage.includes("thank") || lowerMessage.includes("thanks") || lowerMessage.includes("merci")) {
+                return mtcKnowledgeBase.thank_you.réponse;
+            }
+
+            // Liste des catégories avec leur priorité (les plus spécifiques d'abord)
+            const categories = [
+                { key: "need_truck", priority: 1 },
+                { key: "mineral_water", priority: 2 },
+                { key: "datasheet", priority: 3 },
+                { key: "after_sales", priority: 4 },
+                { key: "mechanical_issue", priority: 5 },
+                { key: "immobilized", priority: 6 },
+                { key: "contact", priority: 7 },
+                { key: "presentation", priority: 8 },
+                { key: "price_truck", priority: 9 },
+                { key: "model_available", priority: 10 },
+                { key: "delivery", priority: 11 },
+                { key: "right_trucks", priority: 12 },
+                { key: "warning", priority: 13 },
+                { key: "workshop", priority: 14 },
+                { key: "maintenance", priority: 15 },
+                { key: "spare_part", priority: 16 },
+                { key: "track_fleet", priority: 17 },
+                { key: "warranty", priority: 18 },
+                { key: "financing", priority: 19 },
+                { key: "training", priority: 20 }
+            ];
+
+            // Trier par priorité
+            categories.sort((a, b) => a.priority - b.priority);
+
+            // Chercher une correspondance
+            for (const category of categories) {
+                const data = mtcKnowledgeBase[category.key];
+                if (data && data.keywords) {
+                    for (const keyword of data.keywords) {
+                        if (lowerMessage.includes(keyword)) {
+                            return data.réponse;
+                        }
+                    }
+                }
+            }
+
+            // Si aucun mot-clé n'est trouvé, réponse par défaut
+            return `<div class="message-content">
+            <p><strong>I'm sorry, I didn't quite understand your question.</strong></p>
+            <p>I'm AiMan, MTC's expert in MAN solutions. My areas of expertise are:</p>
+            <ul>
+                <li>Truck sales and recommendations</li>
+                <li>Technical specifications</li>
+                <li>After-sales service and repairs</li>
+                <li>Spare parts availability</li>
+                <li>Maintenance and workshop locations</li>
+                <li>Financing options</li>
+                <li>Driver training programs</li>
+            </ul>
+            <p>Which aspect can I help you with today?</p>
+        </div>`;
+        }
+
+        // Initialisation de la scène 3D (reste inchangée)
         window.addEventListener('load', function () {
             const scene = new THREE.Scene();
             scene.background = null;
@@ -1342,7 +1475,7 @@
             );
         });
 
-        // Fonction pour créer un avatar de secours
+        // Fonction pour créer un avatar de secours (reste inchangée)
         function createFallbackAvatar(scene, renderer, camera, container) {
             const bodyGeometry = new THREE.CapsuleGeometry(0.7, 1.4, 4, 8);
             const bodyMaterial = new THREE.MeshPhongMaterial({
@@ -1386,71 +1519,6 @@
             animate();
 
             console.log("✅ Avatar de secours créé");
-        }
-
-        // Fonction pour obtenir une réponse basée sur la base de connaissances
-        function getResponse(message) {
-            const lowerMessage = message.toLowerCase();
-
-            if (lowerMessage.includes('present')) {
-                return mtcKnowledgeBase.presentation.réponse;
-            } else if (lowerMessage.includes('price')) {
-                return mtcKnowledgeBase.price_truck.réponse;
-            } else if (lowerMessage.includes('model') || lowerMessage.includes('available')) {
-                return mtcKnowledgeBase.model_available.réponse;
-            } else if (lowerMessage.includes('delivery')) {
-                return mtcKnowledgeBase.delivery.réponse;
-            } else if (lowerMessage.includes('right truck') || lowerMessage.includes('operation')) {
-                return mtcKnowledgeBase.right_trucks.réponse;
-            } else if (lowerMessage.includes('warning light')) {
-                return mtcKnowledgeBase.warning.réponse;
-            } else if (lowerMessage.includes('nearest') || lowerMessage.includes('workshop')) {
-                return mtcKnowledgeBase.workshop.réponse;
-            } else if (lowerMessage.includes('preventive maitennance')) {
-                return mtcKnowledgeBase.maitenance.réponse;
-            } else if (lowerMessage.includes('spare') || lowerMessage.includes('part')) {
-                return mtcKnowledgeBase.spare_part.réponse;
-            } else if (lowerMessage.includes('track') || lowerMessage.includes('fleet')) {
-                return mtcKnowledgeBase.track_fleet.réponse;
-            } else if (lowerMessage.includes('warranty')) {
-                return mtcKnowledgeBase.warranty_MAN.réponse;
-            } else if (lowerMessage.includes('financing ')) {
-                return mtcKnowledgeBase.financing_options.réponse;
-            } else if (lowerMessage.includes('training')) {
-                return mtcKnowledgeBase.training.réponse;
-            } else if (lowerMessage.includes('prix')) {
-                return mtcKnowledgeBase.prix_camion.réponse;
-            } else if (lowerMessage.includes('modèle')) {
-                return mtcKnowledgeBase.modele_stock.réponse;
-            } else if (lowerMessage.includes('délai') || lowerMessage.includes('livraison')) {
-                return mtcKnowledgeBase.delai_livraison.réponse;
-            } else if (lowerMessage.includes('bon') || lowerMessage.includes('activité')) {
-                return mtcKnowledgeBase.bon_camion.réponse;
-            } else if (lowerMessage.includes('voyant')) {
-                return mtcKnowledgeBase.aide.réponse;
-            } else if (lowerMessage.includes('atelier') || lowerMessage.includes('proche')) {
-                return mtcKnowledgeBase.mtc_proche.réponse;
-            } else if (lowerMessage.includes(' maintenance préventive')) {
-                return mtcKnowledgeBase.maitennance.réponse;
-            } else if (lowerMessage.includes('pièce de rechange')) {
-                return mtcKnowledgeBase.piece_rechange.réponse;
-            } else if (lowerMessage.includes('suivre') || lowerMessage.includes('flotte')) {
-                return mtcKnowledgeBase.suivre_camion.réponse;
-            } else if (lowerMessage.includes('garantie')) {
-                return mtcKnowledgeBase.garantie_camion.réponse;
-            } else if (lowerMessage.includes('aide') || lowerMessage.includes('financement')) {
-                return mtcKnowledgeBase.aide_financement.réponse;
-            } else if (lowerMessage.includes('formations')) {
-                return mtcKnowledgeBase.formations.réponse;
-            } else if (lowerMessage.includes('contact') || lowerMessage.includes('coordinate')) {
-                return mtcKnowledgeBase.contact.réponse;
-            } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('good morning') || lowerMessage.includes('hey')) {
-                return `<div class="message-content">Hello! I'm AiMan, MTC's digital expert specialized in MAN solutions. How can I help you today?</div>`;
-            } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks') || lowerMessage.includes('merci')) {
-                return `<div class="message-content">You're welcome! Don't hesitate if you have other questions about MTC and our MAN services. 😊</div>`;
-            } else {
-                return `<div class="message-content">I'm sorry, I didn't quite understand your question. I'm MATIC, MTC's expert in MAN solutions. My areas of expertise are: missions, vision, sales, spare parts, After-Sales, locations in Algeria<br><br>Which aspect of our expertise can I advise you on?</div>`;
-            }
         }
 
         async function sendMessage() {
@@ -1510,10 +1578,6 @@
             container.scrollTop = container.scrollHeight;
         }
 
-        function getCurrentResponse(text) {
-            return null;
-        }
-
         function quickQuestion(question) {
             document.getElementById('userInput').value = question;
             sendMessage();
@@ -1525,6 +1589,7 @@
             }
         }
     </script>
+
 </body>
 
 </html>
